@@ -1,0 +1,23 @@
+@use "card" as c;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Raleway:wght@600&display=swap");
+
+@mixin color {
+  // dark mode color
+  $base-color: #2b115c;
+  $second-color: #864af9;
+  $search-input: #874af9a1;
+
+  // text-color
+  $yellow-color: #f8e559;
+  $white-color: #fafafa;
+
+  // light mode color
+  $light-base-color: #1d5d9b;
+  $light-second-color: #00a9ff;
+  $light-third-color: #89cff3;
+  $light-search-input: #0a345e;
+}
+
+// style for card
+@include c.card();
