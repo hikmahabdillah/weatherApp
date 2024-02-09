@@ -1,2 +1,38 @@
+@use "color";
+
 @mixin card {
+  .card {
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    padding: 15px;
+    width: 30%;
+    border-radius: 20px;
+    background: rgb(43, 17, 92);
+    background: linear-gradient(
+      to bottom,
+      rgba(43, 17, 92, 0) 0%,
+      rgba(134, 74, 249, 1) 100%
+    );
+
+    .headCard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .status-weather {
+        display: flex;
+        h2 {
+          color: color.$white-color;
+        }
+        span.date-info {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      h3 {
+        font-weight: 600;
+        font-size: 1em;
+        color: color.$yellow-color;
+      }
+    }
+  }
 }
