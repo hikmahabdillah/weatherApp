@@ -94,6 +94,7 @@ main section {
   justify-content: space-around;
   gap: 20px;
   padding: 10px;
+  font-family: "Raleway", sans-serif;
 }
 .content .search-input {
   background-color: rgba(135, 74, 249, 0.631372549);
@@ -109,11 +110,12 @@ main section {
   border: none;
   outline: none;
   background: unset;
-}
-.content .search-input input#search::placeholder {
   font-weight: 600;
   font-size: 1.2em;
   font-family: "Raleway", sans-serif;
+  color: #fafafa;
+}
+.content .search-input input#search::placeholder {
   color: rgba(255, 255, 255, 0.4196078431);
 }
 .content .status {

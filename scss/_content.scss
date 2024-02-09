@@ -7,6 +7,7 @@
     justify-content: space-around;
     gap: 20px;
     padding: 10px;
+    font-family: "Raleway", sans-serif;
     .search-input {
       background-color: color.$search-input;
       border-radius: 50px;
@@ -20,10 +21,11 @@
         border: none;
         outline: none;
         background: unset;
+        font-weight: 600;
+        font-size: 1.2em;
+        font-family: "Raleway", sans-serif;
+        color: color.$white-color;
         &::placeholder {
-          font-weight: 600;
-          font-size: 1.2em;
-          font-family: "Raleway", sans-serif;
           color: #ffffff6b;
         }
       }
