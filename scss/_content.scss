@@ -28,5 +28,32 @@
         }
       }
     }
+    .status {
+      display: flex;
+      justify-content: space-around;
+      font-family: "Poppins", sans-serif;
+      span {
+        // gap: 8px;
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 20px;
+        }
+        span.humidity,
+        span.windSpeed {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          h2.value {
+            height: 27px;
+            color: color.$yellow-color;
+          }
+          h3.label {
+            color: color.$white-color;
+            font-weight: 500;
+          }
+        }
+      }
+    }
   }
 }

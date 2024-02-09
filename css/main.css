@@ -115,4 +115,32 @@ main section {
   font-size: 1.2em;
   font-family: "Raleway", sans-serif;
   color: rgba(255, 255, 255, 0.4196078431);
+}
+.content .status {
+  display: flex;
+  justify-content: space-around;
+  font-family: "Poppins", sans-serif;
+}
+.content .status span {
+  display: flex;
+  align-items: center;
+}
+.content .status span img {
+  margin-right: 20px;
+}
+.content .status span span.humidity,
+.content .status span span.windSpeed {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.content .status span span.humidity h2.value,
+.content .status span span.windSpeed h2.value {
+  height: 27px;
+  color: #f8e559;
+}
+.content .status span span.humidity h3.label,
+.content .status span span.windSpeed h3.label {
+  color: #fafafa;
+  font-weight: 500;
 }/*# sourceMappingURL=main.css.map */
