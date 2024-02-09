@@ -1,1 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Raleway:wght@600&display=swap");/*# sourceMappingURL=main.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Raleway:wght@600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+header h1 {
+  font-size: 1.5em;
+  color: #2b115c;
+  font-family: "Raleway", sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+main section {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #2b115c;
+  width: 75%;
+}/*# sourceMappingURL=main.css.map */
