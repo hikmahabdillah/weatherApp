@@ -2,6 +2,9 @@
 
 @mixin card {
   .card {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     font-family: "Raleway", sans-serif;
     font-weight: 600;
     padding: 15px;
@@ -11,9 +14,12 @@
     background: linear-gradient(
       to bottom,
       rgba(43, 17, 92, 0) 0%,
+      rgba(82, 41, 158, 0.377) 30%,
       rgba(134, 74, 249, 1) 100%
     );
-
+    img.weather-gif {
+      align-self: center;
+    }
     .headCard {
       display: flex;
       justify-content: space-between;
@@ -32,6 +38,27 @@
         font-weight: 600;
         font-size: 1em;
         color: color.$yellow-color;
+      }
+    }
+    .main-temp {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h2.temperature {
+        font-size: 4em;
+        font-weight: 600;
+        max-height: 80px;
+        color: color.$second-color;
+        font-family: "Poppins", sans-serif;
+      }
+      .location {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        h3.loc {
+          color: color.$white-color;
+          font-weight: 500;
+        }
       }
     }
   }
