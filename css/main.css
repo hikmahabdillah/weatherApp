@@ -24,10 +24,11 @@ main section {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
   padding: 30px;
   border-radius: 15px;
+  gap: 40px;
   background-color: #2b115c;
-  width: 75%;
 }
 
 .card {
@@ -37,7 +38,7 @@ main section {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   padding: 15px;
-  width: 30%;
+  width: 350px;
   border-radius: 20px;
   background: rgb(43, 17, 92);
   background: linear-gradient(to bottom, rgba(43, 17, 92, 0) 0%, rgba(82, 41, 158, 0.377) 30%, rgb(134, 74, 249) 100%);
@@ -85,4 +86,33 @@ main section {
 .card .main-temp .location h3.loc {
   color: #fafafa;
   font-weight: 500;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+}
+.content .search-input {
+  background-color: rgba(135, 74, 249, 0.631372549);
+  border-radius: 50px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 430px;
+}
+.content .search-input input#search {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: unset;
+}
+.content .search-input input#search::placeholder {
+  font-weight: 600;
+  font-size: 1.2em;
+  font-family: "Raleway", sans-serif;
+  color: rgba(255, 255, 255, 0.4196078431);
 }/*# sourceMappingURL=main.css.map */

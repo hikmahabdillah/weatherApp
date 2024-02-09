@@ -1,0 +1,32 @@
+@use "color";
+
+@mixin content {
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 10px;
+    .search-input {
+      background-color: color.$search-input;
+      border-radius: 50px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 430px;
+      input#search {
+        width: 100%;
+        border: none;
+        outline: none;
+        background: unset;
+        &::placeholder {
+          font-weight: 600;
+          font-size: 1.2em;
+          font-family: "Raleway", sans-serif;
+          color: #ffffff6b;
+        }
+      }
+    }
+  }
+}
