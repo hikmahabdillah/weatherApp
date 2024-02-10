@@ -27,6 +27,7 @@
       .status-weather {
         display: flex;
         h2 {
+          font-weight: 600;
           color: color.$white-color;
         }
         span.date-info {

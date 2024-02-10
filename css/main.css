@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Poppins:wght@700&family=Raleway:wght@600&family=Raleway:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Poppins:wght@700&family=Poppins:wght@400&family=Raleway:wght@600&family=Raleway:wght@700&family=Raleway:wght@500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +12,7 @@ header {
 }
 header h1 {
   font-size: 1.5em;
+  font-weight: 700;
   color: #2b115c;
   font-family: "Raleway", sans-serif;
 }
@@ -55,6 +56,7 @@ main section {
   display: flex;
 }
 .card .headCard .status-weather h2 {
+  font-weight: 600;
   color: #fafafa;
 }
 .card .headCard .status-weather span.date-info {
@@ -92,9 +94,14 @@ main section {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  gap: 20px;
+  gap: 30px;
   padding: 10px;
   font-family: "Raleway", sans-serif;
+}
+.content h3.forecast-head {
+  color: #f8e559;
+  font-size: 1.5em;
+  font-weight: 600;
 }
 .content .search-input {
   background-color: rgba(135, 74, 249, 0.631372549);
@@ -103,7 +110,7 @@ main section {
   display: flex;
   align-items: center;
   gap: 15px;
-  width: 430px;
+  width: 470px;
 }
 .content .search-input input#search {
   width: 100%;
@@ -138,11 +145,58 @@ main section {
 }
 .content .status span span.humidity h2.value,
 .content .status span span.windSpeed h2.value {
+  font-weight: 600;
   height: 27px;
   color: #f8e559;
 }
 .content .status span span.humidity h3.label,
 .content .status span span.windSpeed h3.label {
   color: #fafafa;
+  font-weight: 400;
+}
+.content .forecast {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 30px;
+}
+.content .forecast .minicard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 210px;
+  height: 80px;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #383838;
+  color: #fafafa;
+  align-items: center;
+}
+.content .forecast .minicard.active {
+  border: 4px solid #864af9;
+  background: linear-gradient(to left top, rgba(43, 17, 92, 0) 0%, rgb(134, 74, 249) 100%);
+}
+.content .forecast .minicard img {
+  margin-left: -20px;
+}
+.content .forecast .minicard h4.stats {
+  color: #f8e559;
+  font-weight: 600;
+}
+.content .forecast .minicard h4.date {
   font-weight: 500;
+}
+.content .forecast .minicard h4.temperature {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  font-family: "Poppins", sans-serif;
+}
+
+footer {
+  padding: 30px;
+  text-align: center;
+  color: #2b115c;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
 }/*# sourceMappingURL=main.css.map */
