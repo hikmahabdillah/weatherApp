@@ -22,29 +22,30 @@
         border-radius: 0px;
       }
     }
-  }
-  @media only screen and (max-width: 578px) {
     .search-input {
       width: 90%;
       margin: 10px;
     }
-    // .forecast {
-    //   padding: 10px;
-    //   display: flex;
-    //   flex-wrap: nowrap !important;
-    //   height: 130px;
-    //   max-width: 500px;
-    //   width: 80%;
-    //   overflow-x: scroll;
-    //   overflow-y: hidden;
-    //   scroll-behavior: smooth;
-    //   justify-content: start !important;
-    //   .minicard {
-    //     min-width: 210px;
-    //     &.active {
-    //       min-width: 210px;
-    //     }
-    //   }
-    // }
+  }
+  @media only screen and (max-width: 578px) {
+    .forecast {
+      padding: 10px;
+      display: flex;
+      overflow-x: auto;
+      justify-content: start !important;
+      flex-wrap: nowrap !important;
+      margin: 0px 10px;
+      max-width: 330px !important;
+      height: 130px;
+
+      .minicard {
+        flex: 0 0 auto;
+        min-width: 210px;
+        margin-right: 15px;
+        &.active {
+          min-width: 210px;
+        }
+      }
+    }
   }
 }

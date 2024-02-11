@@ -226,10 +226,28 @@ footer {
     padding: 0px;
     border-radius: 0px;
   }
-}
-@media only screen and (max-width: 578px) {
   .search-input {
     width: 90%;
     margin: 10px;
+  }
+}
+@media only screen and (max-width: 578px) {
+  .forecast {
+    padding: 10px;
+    display: flex;
+    overflow-x: auto;
+    justify-content: start !important;
+    flex-wrap: nowrap !important;
+    margin: 0px 10px;
+    max-width: 330px !important;
+    height: 130px;
+  }
+  .forecast .minicard {
+    flex: 0 0 auto;
+    min-width: 210px;
+    margin-right: 15px;
+  }
+  .forecast .minicard.active {
+    min-width: 210px;
   }
 }/*# sourceMappingURL=main.css.map */
