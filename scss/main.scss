@@ -1,6 +1,7 @@
 @use "card" as c;
 @use "content" as co;
 @use "color";
+@use "responsive" as r;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Poppins:wght@700&family=Poppins:wght@400&family=Raleway:wght@600&family=Raleway:wght@700&family=Raleway:wght@500&display=swap");
 
@@ -27,14 +28,21 @@ header {
 main {
   display: flex;
   justify-content: center;
+  // padding: 15px;
   section {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-areas:
+      "card search"
+      "card content";
+    // grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+    place-items: center;
+    // display: flex;
+    // justify-content: space-evenly;
+    // align-items: center;
+    // flex-wrap: wrap;
     padding: 30px;
     border-radius: 15px;
-    gap: 40px;
+    gap: 0px 20px;
     background-color: #2b115c;
     // width: 75%;
   }
@@ -44,3 +52,5 @@ main {
 
 // style for card
 @include co.content();
+
+@include r.responsive();

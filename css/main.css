@@ -22,17 +22,17 @@ main {
   justify-content: center;
 }
 main section {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-areas: "card search" "card content";
+  place-items: center;
   padding: 30px;
   border-radius: 15px;
-  gap: 40px;
+  gap: 0px 20px;
   background-color: #2b115c;
 }
 
 .card {
+  grid-area: card;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -90,30 +90,20 @@ main section {
   font-weight: 500;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 30px;
-  padding: 10px;
-  font-family: "Raleway", sans-serif;
-}
-.content h3.forecast-head {
-  color: #f8e559;
-  font-size: 1.5em;
-  font-weight: 600;
-}
-.content .search-input {
+.search-input {
+  width: 100%;
+  max-width: 470px;
+  grid-area: search;
   background-color: rgba(135, 74, 249, 0.631372549);
   border-radius: 50px;
   padding: 10px;
   display: flex;
   align-items: center;
   gap: 15px;
-  width: 470px;
 }
-.content .search-input input#search {
-  width: 100%;
+.search-input input#search {
+  box-sizing: border-box;
+  flex: 1;
   border: none;
   outline: none;
   background: unset;
@@ -122,8 +112,24 @@ main section {
   font-family: "Raleway", sans-serif;
   color: #fafafa;
 }
-.content .search-input input#search::placeholder {
+.search-input input#search::placeholder {
   color: rgba(255, 255, 255, 0.4196078431);
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 30px;
+  padding: 0px 10px 10px;
+  font-family: "Raleway", sans-serif;
+}
+.content h3.forecast-head {
+  color: #f8e559;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-left: 20px;
 }
 .content .status {
   display: flex;
@@ -155,9 +161,12 @@ main section {
   font-weight: 400;
 }
 .content .forecast {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 530px;
+  width: 100%;
+  justify-items: center;
+  justify-content: center;
   gap: 30px;
 }
 .content .forecast .minicard {
@@ -174,7 +183,7 @@ main section {
   align-items: center;
 }
 .content .forecast .minicard.active {
-  border: 4px solid #864af9;
+  box-shadow: inset 0 0 0 4px #864af9;
   background: linear-gradient(to left top, rgba(43, 17, 92, 0) 0%, rgb(134, 74, 249) 100%);
 }
 .content .forecast .minicard img {
@@ -199,4 +208,28 @@ footer {
   color: #2b115c;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    background-color: #2b115c;
+  }
+  footer p {
+    color: #fafafa;
+  }
+  header {
+    display: none;
+  }
+  main section {
+    grid-template-areas: "search" "card" "content";
+    gap: 30px;
+    padding: 0px;
+    border-radius: 0px;
+  }
+}
+@media only screen and (max-width: 578px) {
+  .search-input {
+    width: 90%;
+    margin: 10px;
+  }
 }/*# sourceMappingURL=main.css.map */

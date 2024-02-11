@@ -2,6 +2,7 @@
 
 @mixin card {
   .card {
+    grid-area: card;
     display: flex;
     flex-direction: column;
     gap: 30px;

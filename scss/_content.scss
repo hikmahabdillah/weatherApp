@@ -1,39 +1,50 @@
 @use "color";
 
 @mixin content {
+  // form {
+  //   display: flex;
+  //   align-items: center;
+  //   height: 50px;
+  //   margin: 0 auto;
+  // }
+  .search-input {
+    width: 100%;
+    max-width: 470px;
+    grid-area: search;
+    background-color: color.$search-input;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    input#search {
+      box-sizing: border-box;
+      flex: 1;
+      border: none;
+      outline: none;
+      background: unset;
+      font-weight: 600;
+      font-size: 1.2em;
+      font-family: "Raleway", sans-serif;
+      color: color.$white-color;
+      &::placeholder {
+        color: #ffffff6b;
+      }
+    }
+  }
   .content {
+    grid-area: content;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     gap: 30px;
-    padding: 10px;
+    padding: 0px 10px 10px;
     font-family: "Raleway", sans-serif;
     h3.forecast-head {
       color: color.$yellow-color;
       font-size: 1.5em;
       font-weight: 600;
-    }
-    .search-input {
-      background-color: color.$search-input;
-      border-radius: 50px;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      width: 470px;
-      input#search {
-        width: 100%;
-        border: none;
-        outline: none;
-        background: unset;
-        font-weight: 600;
-        font-size: 1.2em;
-        font-family: "Raleway", sans-serif;
-        color: color.$white-color;
-        &::placeholder {
-          color: #ffffff6b;
-        }
-      }
+      margin-left: 20px;
     }
     .status {
       display: flex;
@@ -63,15 +74,23 @@
         }
       }
     }
+
     .forecast {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, auto);
+      // display: grid;
+      // grid-template-columns: repeat(2, 1fr);
+      // grid-template-rows: repeat(2, auto);
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 530px;
+      width: 100%;
+      justify-items: center;
+      justify-content: center;
       gap: 30px;
       .minicard {
         // display: grid;
         // grid-template-columns: repeat(2, 1fr);
         // grid-template-rows: repeat(2, auto);
+
         display: flex;
         flex-wrap: wrap;
         width: 210px;
@@ -84,7 +103,8 @@
         color: color.$white-color;
         align-items: center;
         &.active {
-          border: 4px solid color.$second-color;
+          box-shadow: inset 0 0 0 4px color.$second-color;
+          // border: 4px solid ;
           background: linear-gradient(
             to left top,
             rgba(43, 17, 92, 0) 0%,
