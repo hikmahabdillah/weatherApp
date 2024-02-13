@@ -102,6 +102,11 @@
         background-color: #383838;
         color: color.$white-color;
         align-items: center;
+        transition: 0.5s;
+        cursor: pointer;
+        &:hover {
+          background-color: color.$second-color;
+        }
         &.active {
           box-shadow: inset 0 0 0 4px color.$second-color;
           // border: 4px solid ;
