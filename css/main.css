@@ -62,6 +62,7 @@ main section {
 .card .headCard .status-weather span.date-info {
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
 }
 .card .headCard h3 {
   font-weight: 600;
