@@ -5,6 +5,36 @@
   border: 0;
 }
 
+body.light-theme {
+  transition: 0.5s;
+}
+body.light-theme header h1 {
+  color: #1d5d9b;
+}
+body.light-theme main section {
+  background-color: #1d5d9b;
+}
+body.light-theme .card {
+  background: rgb(29, 93, 155);
+  background: linear-gradient(180deg, rgb(29, 93, 155) 0%, rgb(42, 112, 179) 35%, rgb(0, 169, 255) 100%);
+}
+body.light-theme .card .main-temp h2.temperature {
+  color: #89cff3;
+}
+body.light-theme .search-input {
+  background-color: #0a345e;
+}
+body.light-theme .content .forecast .minicard.active {
+  box-shadow: inset 0 0 0 4px #00a9ff;
+  background: linear-gradient(to left top, rgba(29, 93, 155, 0) 0%, rgb(0, 169, 255) 100%);
+}
+body.light-theme .content .forecast .minicard h4.temperature {
+  color: #f8e559;
+}
+body.light-theme footer p {
+  color: #1d5d9b;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -217,6 +247,9 @@ footer {
 @media only screen and (max-width: 1000px) {
   body {
     background-color: #2b115c;
+  }
+  body.light-theme {
+    background-color: #1d5d9b;
   }
   footer p {
     color: #fafafa;

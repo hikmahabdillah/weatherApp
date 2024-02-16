@@ -7,6 +7,28 @@
 //     minicard.classList.add("active");
 //   });
 // });
+
+// DIFFERENT STYLE WHEN SPESIFIC TIME HAS COME
+
+document.addEventListener("DOMContentLoaded", function () {
+  changeTheme();
+  setInterval(changeTheme, 60000);
+});
+
+const changeTheme = () => {
+  const bodyAct = document.querySelector("body");
+  const currentHour = new Date().getHours();
+  console.log(currentHour);
+
+  if (currentHour >= 6 && currentHour < 18) {
+    bodyAct.classList.remove("light-theme");
+  } else {
+    // For other hours (6 PM to 5 AM)
+    bodyAct.classList.add("light-theme");
+  }
+};
+
+// START OF PROCESS REQUEST DATA
 import config from "./config.js";
 
 // GETDATE

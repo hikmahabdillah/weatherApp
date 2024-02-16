@@ -4,6 +4,9 @@
   @media only screen and (max-width: 1000px) {
     body {
       background-color: color.$base-color;
+      &.light-theme {
+        background-color: color.$light-base-color;
+      }
     }
     footer p {
       color: color.$white-color;
