@@ -217,3 +217,164 @@ const getCurrentForecast = (latitude, longitude) => {
       });
     });
 };
+
+// FOR GET WEATHER INFO
+const inputcity = document.querySelector(".search-input input");
+
+inputcity.addEventListener("keypress", (event) => {
+  // GET CITY NAME
+  const city = document.querySelector(".search-input input").value;
+  if (event.key === "Enter") {
+    getWeather(city);
+    getForecast(city);
+  }
+});
+
+const getWeather = async (city) => {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=metric`
+    );
+
+    if (response.ok) {
+      const jsonResponse = await response.json();
+
+      console.log(jsonResponse);
+
+      const temperature = document.querySelector(".temperature");
+      const image = document.querySelector(".iconStatus");
+      const loc = document.querySelector(`.loc`);
+      const gif = document.querySelector(`.gif`);
+      const statusWeather = document.querySelector(".status");
+      const humidity = document.querySelector(`.humidity .value`);
+      const windspeed = document.querySelector(`.windSpeed .value`);
+      let descForecast = "";
+
+      switch (jsonResponse.weather[0].main) {
+        case "Clear":
+          image.src = "./img/Partly Cloudy Day.png";
+          image.style.width = "55px";
+          descForecast = "Clear";
+          break;
+        case "Clouds":
+          image.src = "./img/Cloud.png";
+          image.style.width = "55px";
+          descForecast = "Cloudy";
+          break;
+        case "Rain":
+          image.src = "./img/Rain.png";
+          image.style.width = "55px";
+          descForecast = "Rain";
+          break;
+        case "Snow":
+          image.src = "./img/Snow.png";
+          image.style.width = "55px";
+          descForecast = "Snow";
+          break;
+        case "Haze":
+          image.src = "./img/Storm.png";
+          image.style.width = "55px";
+          descForecast = "Storm";
+          break;
+
+        default:
+          image.src = "";
+      }
+
+      temperature.innerHTML = `${parseInt(
+        jsonResponse.main.temp
+      )}<span>°C</span>`;
+      statusWeather.innerHTML = `${descForecast}`;
+      loc.innerHTML = `${jsonResponse.name}, ${jsonResponse.sys.country}`;
+      humidity.innerHTML = `${jsonResponse.main.humidity}%`;
+      windspeed.innerHTML = `${jsonResponse.wind.speed}Km/h`;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getForecast = async (city) => {
+  const weatherMinicard = document.querySelector(".forecast");
+
+  let iconForecast = "";
+  let descForecast = "";
+
+  // function to create minicard for each day of the forecast
+  const createMinicard = (item, index) => {
+    // for decide the src of img(icon) based on case description weather
+    switch (item.weather[0].main) {
+      case "Clear":
+        iconForecast = "./img/Partly Cloudy Day.png";
+        descForecast = "Clear";
+        break;
+      case "Clouds":
+        iconForecast = "./img/Cloud.png";
+        descForecast = "Cloudy";
+        break;
+      case "Rain":
+        iconForecast = "./img/Rain.png";
+        descForecast = "Rain";
+        break;
+      case "Snow":
+        iconForecast = "./img/Snow.png";
+        descForecast = "Snow";
+        break;
+      case "Haze":
+        iconForecast = "./img/Storm.png";
+        descForecast = "Storm";
+        break;
+
+      default:
+        image.src = "";
+    }
+
+    if (index !== 0) {
+      return `  <div class="minicard active">
+      <h4 class="stats">${descForecast}</h4>
+      <h4 class="date">${new Date(item.dt_txt).toLocaleDateString("en-us", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+      })}</h4>
+      <img
+        src="${iconForecast}"
+        alt="status weather"
+        width="75px"
+        class="iconForecast"
+      />
+      <h4 class="temperature">${item.main.temp} °C </h4>
+    </div>`;
+    }
+  };
+
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${APIKey}&units=metric`
+    );
+    if (response.ok) {
+      const jsonResponse = await response.json();
+
+      const uniqueForecastDays = [];
+      // for filter the forecasts to get only one forecast per day
+      const weatherForecast = jsonResponse.list.filter((forecast) => {
+        const forecastDate = new Date(forecast.dt_txt).getDate();
+        if (!uniqueForecastDays.includes(forecastDate)) {
+          return uniqueForecastDays.push(forecastDate);
+        }
+      });
+      console.log(weatherForecast);
+
+      weatherMinicard.innerHTML = "";
+
+      weatherForecast.forEach((item, index) => {
+        const html = createMinicard(item, index);
+        if (index !== 0 && index !== 5) {
+          weatherMinicard.insertAdjacentHTML("beforeend", html);
+        }
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
