@@ -21,10 +21,10 @@ const changeTheme = () => {
   console.log(currentHour);
 
   if (currentHour >= 6 && currentHour < 18) {
-    bodyAct.classList.remove("light-theme");
+    bodyAct.classList.add("light-theme");
   } else {
     // For other hours (6 PM to 5 AM)
-    bodyAct.classList.add("light-theme");
+    bodyAct.classList.remove("light-theme");
   }
 };
 
