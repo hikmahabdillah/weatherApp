@@ -352,13 +352,18 @@ const getForecast = async (city) => {
     }
 
     if (index !== 0) {
+      const dateValue =
+        index === 1
+          ? "Tommorow"
+          : new Date(item.dt_txt).toLocaleDateString("en-us", {
+              weekday: "short",
+              month: "short",
+              day: "numeric",
+            });
+
       return `  <div class="minicard active">
       <h4 class="stats">${descForecast}</h4>
-      <h4 class="date">${new Date(item.dt_txt).toLocaleDateString("en-us", {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-      })}</h4>
+      <h4 class="date">${dateValue}</h4>
       <img
         src="${iconForecast}"
         alt="status weather"
