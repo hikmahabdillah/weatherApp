@@ -110,7 +110,7 @@ const getCurrentLoc = (latitude, longitude) => {
       const temperature = document.querySelector(".temperature");
       const image = document.querySelector(".iconStatus");
       const loc = document.querySelector(`.loc`);
-      const gif = document.querySelector(`.gif`);
+      const imgTemp = document.querySelector(`.weather-img`);
       const statusWeather = document.querySelector(".status");
       const humidity = document.querySelector(`.humidity .value`);
       const windspeed = document.querySelector(`.windSpeed .value`);
@@ -120,26 +120,31 @@ const getCurrentLoc = (latitude, longitude) => {
         case "Clear":
           image.src = "./img/Partly Cloudy Day.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Clear Temp.png";
           descForecast = "Clear";
           break;
         case "Clouds":
           image.src = "./img/Cloud.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Cloudy Temp.png";
           descForecast = "Cloudy";
           break;
         case "Rain":
           image.src = "./img/Rain.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Rain Temp.png";
           descForecast = "Rain";
           break;
         case "Snow":
           image.src = "./img/Snow.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Snow Temp.png";
           descForecast = "Snow";
           break;
         case "Haze":
           image.src = "./img/Storm.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Storm Temp.png";
           descForecast = "Storm";
           break;
 
@@ -266,7 +271,7 @@ const getWeather = async (city) => {
       const temperature = document.querySelector(".temperature");
       const image = document.querySelector(".iconStatus");
       const loc = document.querySelector(`.loc`);
-      const gif = document.querySelector(`.gif`);
+      const imgTemp = document.querySelector(`.weather-img`);
       const statusWeather = document.querySelector(".status");
       const humidity = document.querySelector(`.humidity .value`);
       const windspeed = document.querySelector(`.windSpeed .value`);
@@ -276,26 +281,31 @@ const getWeather = async (city) => {
         case "Clear":
           image.src = "./img/Partly Cloudy Day.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Clear Temp.png";
           descForecast = "Clear";
           break;
         case "Clouds":
           image.src = "./img/Cloud.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Cloudy Temp.png";
           descForecast = "Cloudy";
           break;
         case "Rain":
           image.src = "./img/Rain.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Rain Temp.png";
           descForecast = "Rain";
           break;
         case "Snow":
           image.src = "./img/Snow.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Snow Temp.png";
           descForecast = "Snow";
           break;
         case "Haze":
           image.src = "./img/Storm.png";
           image.style.width = "55px";
+          imgTemp.src = "./img/Storm Temp.png";
           descForecast = "Storm";
           break;
 

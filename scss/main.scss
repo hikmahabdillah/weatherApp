@@ -54,6 +54,9 @@ body {
               rgba(0, 169, 255, 1) 100%
             );
           }
+          h4.stats {
+            color: color.$white-color;
+          }
           h4.temperature {
             color: color.$yellow-color;
           }
