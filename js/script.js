@@ -262,20 +262,19 @@ const getWeather = async (city) => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=metric`
     );
+    const temperature = document.querySelector(".temperature");
+    const image = document.querySelector(".iconStatus");
+    const loc = document.querySelector(`.loc`);
+    const imgTemp = document.querySelector(`.weather-img`);
+    const statusWeather = document.querySelector(".status");
+    const humidity = document.querySelector(`.humidity .value`);
+    const windspeed = document.querySelector(`.windSpeed .value`);
+    let descForecast = "";
 
     if (response.ok) {
       const jsonResponse = await response.json();
 
       console.log(jsonResponse);
-
-      const temperature = document.querySelector(".temperature");
-      const image = document.querySelector(".iconStatus");
-      const loc = document.querySelector(`.loc`);
-      const imgTemp = document.querySelector(`.weather-img`);
-      const statusWeather = document.querySelector(".status");
-      const humidity = document.querySelector(`.humidity .value`);
-      const windspeed = document.querySelector(`.windSpeed .value`);
-      let descForecast = "";
 
       switch (jsonResponse.weather[0].main) {
         case "Clear":
@@ -320,6 +319,10 @@ const getWeather = async (city) => {
       loc.innerHTML = `${jsonResponse.name}, ${jsonResponse.sys.country}`;
       humidity.innerHTML = `${jsonResponse.main.humidity}%`;
       windspeed.innerHTML = `${jsonResponse.wind.speed}Km/h`;
+    }
+    if (response.status === 404) {
+      console.log("Error! city not found");
+      return;
     }
   } catch (err) {
     console.log(err);

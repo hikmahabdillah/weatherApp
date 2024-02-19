@@ -94,7 +94,6 @@ main {
     grid-template-areas:
       "card search"
       "card content";
-    // grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
     place-items: center;
     // display: flex;
     // justify-content: space-evenly;
@@ -107,6 +106,16 @@ main {
     // width: 75%;
   }
 }
+
+// style for popup 404
+.popup-404 {
+  display: none;
+  h3 {
+    font-size: 2.4em;
+    text-align: center;
+  }
+}
+
 // style for card
 @include c.card();
 

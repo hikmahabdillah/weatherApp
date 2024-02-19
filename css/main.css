@@ -64,6 +64,14 @@ main section {
   background-color: #2b115c;
 }
 
+.popup-404 {
+  display: none;
+}
+.popup-404 h3 {
+  font-size: 2.4em;
+  text-align: center;
+}
+
 .card {
   grid-area: card;
   display: flex;
