@@ -257,6 +257,15 @@ inputcity.addEventListener("keypress", (event) => {
   }
 });
 
+// FOR POPUP 404
+const popup404 = document.querySelector(".overlay");
+const closebtn = document.querySelector("span.close");
+const closePopup = () => {
+  popup404.classList.remove("active");
+};
+popup404.addEventListener("click", closePopup);
+closebtn.addEventListener("click", closePopup);
+
 const getWeather = async (city) => {
   try {
     const response = await fetch(
@@ -322,6 +331,7 @@ const getWeather = async (city) => {
     }
     if (response.status === 404) {
       console.log("Error! city not found");
+      popup404.classList.add("active");
       return;
     }
   } catch (err) {

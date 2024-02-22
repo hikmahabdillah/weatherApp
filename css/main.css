@@ -72,12 +72,16 @@ main section {
   width: 100%;
   height: 100%;
   border-radius: 20px;
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+.overlay.active {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.overlay .popup-404 {
+.overlay.active .popup-404 {
   background-color: #fff;
   padding: 30px;
   border-radius: 20px;
@@ -88,25 +92,25 @@ main section {
   max-width: 300px;
   width: 100%;
 }
-.overlay .popup-404 h2 {
+.overlay.active .popup-404 h2 {
   font-size: 4em;
   text-align: center;
   font-family: "Poppins", sans-serif;
   margin-bottom: -20px;
   color: #2b115c;
 }
-.overlay .popup-404 span.close {
+.overlay.active .popup-404 span.close {
   font-size: 3em;
   font-weight: 700;
   cursor: pointer;
   align-self: end;
   margin-top: -20px;
 }
-.overlay .popup-404 img {
+.overlay.active .popup-404 img {
   width: 230px;
   margin: 0 auto;
 }
-.overlay .popup-404 h3 {
+.overlay.active .popup-404 h3 {
   font-size: 1.2em;
   text-align: center;
   font-family: "Raleway", sans-serif;
