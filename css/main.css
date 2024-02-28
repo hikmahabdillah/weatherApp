@@ -288,6 +288,7 @@ main section {
 }
 .content .forecast .minicard h4.date {
   font-weight: 500;
+  min-width: 77px;
 }
 .content .forecast .minicard h4.temperature {
   margin-bottom: 15px;

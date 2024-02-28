@@ -252,8 +252,7 @@ inputcity.addEventListener("keypress", (event) => {
   // GET CITY NAME
   const city = document.querySelector(".search-input input").value;
   if (event.key === "Enter") {
-    getWeather(city);
-    getForecast(city);
+    getWeatherAndForecast(city);
   }
 });
 
@@ -266,80 +265,65 @@ const closePopup = () => {
 popup404.addEventListener("click", closePopup);
 closebtn.addEventListener("click", closePopup);
 
-const getWeather = async (city) => {
-  try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=metric`
-    );
-    const temperature = document.querySelector(".temperature");
-    const image = document.querySelector(".iconStatus");
-    const loc = document.querySelector(`.loc`);
-    const imgTemp = document.querySelector(`.weather-img`);
-    const statusWeather = document.querySelector(".status");
-    const humidity = document.querySelector(`.humidity .value`);
-    const windspeed = document.querySelector(`.windSpeed .value`);
-    let descForecast = "";
+// for handle data of currentWeather
+const handleCurrentWeather = (jsonResponse) => {
+  // call element yang di butuhkan
+  const temperature = document.querySelector(".temperature");
+  const image = document.querySelector(".iconStatus");
+  const loc = document.querySelector(`.loc`);
+  const imgTemp = document.querySelector(`.weather-img`);
+  const statusWeather = document.querySelector(".status");
+  const humidity = document.querySelector(`.humidity .value`);
+  const windspeed = document.querySelector(`.windSpeed .value`);
+  let descForecast = "";
 
-    if (response.ok) {
-      const jsonResponse = await response.json();
+  console.log(jsonResponse);
 
-      console.log(jsonResponse);
+  switch (jsonResponse.weather[0].main) {
+    case "Clear":
+      image.src = "./img/Partly Cloudy Day.png";
+      image.style.width = "55px";
+      imgTemp.src = "./img/Clear Temp.png";
+      descForecast = "Clear";
+      break;
+    case "Clouds":
+      image.src = "./img/Cloud.png";
+      image.style.width = "55px";
+      imgTemp.src = "./img/Cloudy Temp.png";
+      descForecast = "Cloudy";
+      break;
+    case "Rain":
+      image.src = "./img/Rain.png";
+      image.style.width = "55px";
+      imgTemp.src = "./img/Rain Temp.png";
+      descForecast = "Rain";
+      break;
+    case "Snow":
+      image.src = "./img/Snow.png";
+      image.style.width = "55px";
+      imgTemp.src = "./img/Snow Temp.png";
+      descForecast = "Snow";
+      break;
+    case "Haze":
+      image.src = "./img/Storm.png";
+      image.style.width = "55px";
+      imgTemp.src = "./img/Storm Temp.png";
+      descForecast = "Storm";
+      break;
 
-      switch (jsonResponse.weather[0].main) {
-        case "Clear":
-          image.src = "./img/Partly Cloudy Day.png";
-          image.style.width = "55px";
-          imgTemp.src = "./img/Clear Temp.png";
-          descForecast = "Clear";
-          break;
-        case "Clouds":
-          image.src = "./img/Cloud.png";
-          image.style.width = "55px";
-          imgTemp.src = "./img/Cloudy Temp.png";
-          descForecast = "Cloudy";
-          break;
-        case "Rain":
-          image.src = "./img/Rain.png";
-          image.style.width = "55px";
-          imgTemp.src = "./img/Rain Temp.png";
-          descForecast = "Rain";
-          break;
-        case "Snow":
-          image.src = "./img/Snow.png";
-          image.style.width = "55px";
-          imgTemp.src = "./img/Snow Temp.png";
-          descForecast = "Snow";
-          break;
-        case "Haze":
-          image.src = "./img/Storm.png";
-          image.style.width = "55px";
-          imgTemp.src = "./img/Storm Temp.png";
-          descForecast = "Storm";
-          break;
-
-        default:
-          image.src = "";
-      }
-
-      temperature.innerHTML = `${parseInt(
-        jsonResponse.main.temp
-      )}<span>°C</span>`;
-      statusWeather.innerHTML = `${descForecast}`;
-      loc.innerHTML = `${jsonResponse.name}, ${jsonResponse.sys.country}`;
-      humidity.innerHTML = `${jsonResponse.main.humidity}%`;
-      windspeed.innerHTML = `${jsonResponse.wind.speed}Km/h`;
-    }
-    if (response.status === 404) {
-      console.log("Error! city not found");
-      popup404.classList.add("active");
-      return;
-    }
-  } catch (err) {
-    console.log(err);
+    default:
+      image.src = "";
   }
+
+  temperature.innerHTML = `${parseInt(jsonResponse.main.temp)}<span>°C</span>`;
+  statusWeather.innerHTML = `${descForecast}`;
+  loc.innerHTML = `${jsonResponse.name}, ${jsonResponse.sys.country}`;
+  humidity.innerHTML = `${jsonResponse.main.humidity}%`;
+  windspeed.innerHTML = `${jsonResponse.wind.speed}Km/h`;
 };
 
-const getForecast = async (city) => {
+// for handle data of forecast
+const handleForecast = (jsonResponse) => {
   const weatherMinicard = document.querySelector(".forecast");
 
   let iconForecast = "";
@@ -398,31 +382,53 @@ const getForecast = async (city) => {
     }
   };
 
+  const uniqueForecastDays = [];
+  // for filter the forecasts to get only one forecast per day
+  const weatherForecast = jsonResponse.list.filter((forecast) => {
+    const forecastDate = new Date(forecast.dt_txt).getDate();
+    if (!uniqueForecastDays.includes(forecastDate)) {
+      return uniqueForecastDays.push(forecastDate);
+    }
+  });
+  console.log(weatherForecast);
+
+  weatherMinicard.innerHTML = "";
+
+  weatherForecast.forEach((item, index) => {
+    const html = createMinicard(item, index);
+    if (index !== 0 && index !== 5) {
+      weatherMinicard.insertAdjacentHTML("beforeend", html);
+    }
+  });
+};
+
+// Untuk mendapatkan Data dari API dan Menampilkannya
+const getWeatherAndForecast = async (city) => {
   try {
-    const response = await fetch(
+    // Get current weather
+    const weatherResponse = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=metric`
+    );
+
+    // Get forecast
+    const forecastResponse = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${APIKey}&units=metric`
     );
-    if (response.ok) {
-      const jsonResponse = await response.json();
 
-      const uniqueForecastDays = [];
-      // for filter the forecasts to get only one forecast per day
-      const weatherForecast = jsonResponse.list.filter((forecast) => {
-        const forecastDate = new Date(forecast.dt_txt).getDate();
-        if (!uniqueForecastDays.includes(forecastDate)) {
-          return uniqueForecastDays.push(forecastDate);
-        }
-      });
-      console.log(weatherForecast);
+    if (weatherResponse.ok && forecastResponse.ok) {
+      const weatherJsonResponse = await weatherResponse.json();
+      const forecastJsonResponse = await forecastResponse.json();
 
-      weatherMinicard.innerHTML = "";
+      // Call a function to handle the current weather data
+      handleCurrentWeather(weatherJsonResponse);
 
-      weatherForecast.forEach((item, index) => {
-        const html = createMinicard(item, index);
-        if (index !== 0 && index !== 5) {
-          weatherMinicard.insertAdjacentHTML("beforeend", html);
-        }
-      });
+      // Call a function to handle the forecast data
+      handleForecast(forecastJsonResponse);
+    }
+    if (weatherResponse.status === 404 || forecastResponse.status === 404) {
+      console.log("Error! City not found");
+      popup404.classList.add("active");
+      return;
     }
   } catch (err) {
     console.log(err);
