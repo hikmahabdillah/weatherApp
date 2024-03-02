@@ -77,6 +77,9 @@ getLocation()
 
     // Call another function with the location values
     getLocWeatherAndForecast(location.latitude, location.longitude);
+    setInterval(function () {
+      getLocWeatherAndForecast(location.latitude, location.longitude);
+    }, 600000);
   })
   .catch((error) => {
     console.error(error);
