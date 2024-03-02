@@ -136,6 +136,9 @@ inputcity.addEventListener("keypress", (event) => {
   const city = document.querySelector(".search-input input").value;
   if (event.key === "Enter") {
     getWeatherAndForecast(city);
+    setInterval(function () {
+      getWeatherAndForecast(city);
+    }, 600000);
   }
 });
 
