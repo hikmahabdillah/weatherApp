@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
+    <div class="bg-intro">
+      <div class="loader"></div>
+    </div>
     <header>
       <h1>WeatherAld App</h1>
     </header>
@@ -81,7 +84,7 @@
           </div>
           <h3 class="forecast-head">Forecast</h3>
           <div class="forecast">
-            <div class="minicard active">
+            <div class="minicard active 1">
               <h4 class="stats">-</h4>
               <h4 class="date">Tommorow</h4>
               <img
@@ -92,7 +95,7 @@
               />
               <h4 class="temperature">- °C</h4>
             </div>
-            <div class="minicard active">
+            <div class="minicard active 2">
               <h4 class="stats">-</h4>
               <h4 class="date">-</h4>
               <img
@@ -103,7 +106,7 @@
               />
               <h4 class="temperature">- °C</h4>
             </div>
-            <div class="minicard active">
+            <div class="minicard active 3">
               <h4 class="stats">-</h4>
               <h4 class="date">-</h4>
               <img
@@ -114,7 +117,7 @@
               />
               <h4 class="temperature">- °C</h4>
             </div>
-            <div class="minicard active">
+            <div class="minicard active 4">
               <h4 class="stats">-</h4>
               <h4 class="date">-</h4>
               <img
@@ -145,5 +148,6 @@
     </footer>
     <script type="module" src="./js/script.js"></script>
     <script type="module" src="./js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   </body>
 </html>

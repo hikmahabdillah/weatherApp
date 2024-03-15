@@ -9,7 +9,6 @@
 // });
 
 // DIFFERENT STYLE WHEN SPESIFIC TIME HAS COME
-
 document.addEventListener("DOMContentLoaded", function () {
   changeTheme();
   setInterval(changeTheme, 60000);
@@ -320,3 +319,38 @@ const getWeatherAndForecast = async (city) => {
     console.log(err);
   }
 };
+
+// ADD ANIMATION WITH GSAP
+
+const bgloader = document.querySelector(".bg-intro");
+const preloader = document.querySelector(".loader");
+window.addEventListener("load", () => {
+  gsap.to(preloader, { opacity: 0, duration: 2, onComplete: hidePreloader });
+  gsap.to(bgloader, { opacity: 0, duration: 2, onComplete: hidePreloader });
+
+  // animation for timeline()
+  const tl = gsap.timeline();
+  tl.from("header h1", { y: -50, duration: 1, opacity: 0 })
+    .from("footer p", { y: 50, duration: 1, opacity: 0 })
+    .from("main section", { duration: 0.4, opacity: 0 })
+    .from(".card", { duration: 0.6, opacity: 0 })
+    .from(".headCard", { y: -50, duration: 0.3, opacity: 0 })
+    .from(".main-temp", { y: -50, duration: 0.3, opacity: 0 })
+    .from(".weather-img", { y: 50, duration: 0.3, opacity: 0 })
+    .from(".search-input", { y: 100, duration: 0.4, opacity: 0 })
+    .from(".content span", { y: 100, duration: 0.4, opacity: 0 })
+    .from(".content .forecast-head", { duration: 0.4, opacity: 0 })
+    .from(".content .forecast", { y: 50, duration: 0.4, opacity: 0 });
+  // .from(".content .forecast .minicard", {
+  //   y: -50,
+  //   delay: 0.4,
+  //   duration: 0.4,
+  //   opacity: 0,
+  // });
+});
+
+function hidePreloader() {
+  // Sembunyikan preloader
+  preloader.style.display = "none";
+  bgloader.style.display = "none";
+}
