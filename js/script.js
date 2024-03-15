@@ -325,14 +325,15 @@ const getWeatherAndForecast = async (city) => {
 const bgloader = document.querySelector(".bg-intro");
 const preloader = document.querySelector(".loader");
 window.addEventListener("load", () => {
-  gsap.to(preloader, { opacity: 0, duration: 1.5, onComplete: hidePreloader });
-  gsap.to(bgloader, { opacity: 0, duration: 1.5, onComplete: hidePreloader });
+  // if page is fully loaded, remove preloader
+  gsap.to(preloader, { opacity: 0, onComplete: hidePreloader });
+  gsap.to(bgloader, { opacity: 0, onComplete: hidePreloader });
 
   // animation for timeline()
   const tl = gsap.timeline();
-  tl.from("header h1", { y: -50, duration: 0.5, opacity: 0 })
-    .from("main section", { duration: 0.4, opacity: 0 })
-    .from(".card", { duration: 0.6, opacity: 0 })
+  tl.from("header h1", { y: -50, duration: 0.2, opacity: 0 })
+    .from("main section", { duration: 0.2, opacity: 0 })
+    .from(".card", { duration: 0.4, opacity: 0 })
     .from(".headCard", { y: -50, duration: 0.3, opacity: 0 })
     .from(".main-temp", { y: -50, duration: 0.3, opacity: 0 })
     .from(".weather-img", { y: 50, duration: 0.3, opacity: 0 })
@@ -341,7 +342,7 @@ window.addEventListener("load", () => {
 });
 
 function hidePreloader() {
-  // Sembunyikan preloader
+  // hidding preloader
   preloader.style.display = "none";
   bgloader.style.display = "none";
 }
