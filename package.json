@@ -1,8 +1,6 @@
 {
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev": "vite"
   },
   "devDependencies": {
     "dotenv": "^16.4.5",
