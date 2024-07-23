@@ -28,7 +28,7 @@ const changeTheme = () => {
 };
 
 // START OF PROCESS REQUEST DATA
-import config from "./config.js";
+// import config from "./config.js";
 
 // GETDATE
 function formatCurrentDate() {
@@ -46,7 +46,7 @@ function formatCurrentDate() {
 formatCurrentDate();
 
 // API KEY
-const APIKey = config.apikey;
+const APIKey = import.meta.env.VITE_API_KEY;
 
 // FUNCTION FOR GET CURRENT LOCATION
 function getLocation() {
